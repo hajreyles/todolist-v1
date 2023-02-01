@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-let items = ["Buy Food", "Cook Food", "Eat Food"];
+let items = ["Buy Food", "Cook Food", "Eat Food", "Sell Food"];
 
 let hze = "Hacer Zeynep Karaosmanoglu"
 
@@ -50,3 +50,4 @@ app.listen(3000, function() {
     console.log("Server is running on port 3000.");
 });
 
+// biricik esin sana cooook tesekkur ediyorrrr ve seni ccooookkkk seviyoooorrr <3 <3
