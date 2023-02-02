@@ -5,15 +5,15 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-let items = ["Buy Food", "Cook Food", "Eat Food", "Sell Food"];
-
-let hze = "Hacer Zeynep Karaosmanoglu"
+let items = ["Buy Food", "Cook Food", "Eat Food"];
 
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+app.use(express.static("public"));
 
 app.get("/", function(req, res) {
 
@@ -23,18 +23,15 @@ app.get("/", function(req, res) {
     let options = {
         weekday: "long",
         day: "numeric",
-        month: "long",
-        year: "numeric"
+        month: "long"
     };
  
-
     // Converts date to string.
-    let day = today.toLocaleDateString("en-GB", options);
+    let day = today.toLocaleDateString("en-US", options);
 
     // Calling EJS file to render.
     res.render("list", {
-        kindOfDay: day, newListItems: items, uppertitle: hze});
-
+        kindOfDay: day, newListItems: items});
 });
 
 app.post("/", function(req, res) {
@@ -43,11 +40,9 @@ app.post("/", function(req, res) {
     items.push(item);
 
     res.redirect("/");
-
 });
 
 app.listen(3000, function() {
     console.log("Server is running on port 3000.");
 });
 
-// biricik esin sana cooook tesekkur ediyorrrr ve seni ccooookkkk seviyoooorrr <3 <3
