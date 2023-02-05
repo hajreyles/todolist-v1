@@ -87,7 +87,6 @@ input[type="text"]:focus {
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
-
 ::placeholder {
   color: grey;
   opacity: 1;
