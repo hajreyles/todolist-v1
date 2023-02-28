@@ -6,6 +6,7 @@ const date = require(__dirname + "/date.js");
 const mongoose = require("mongoose");
 const {Schema} = require("mongoose");
 const {model} = require("mongoose");
+const process = require('process');
 
 const app = express();
 
@@ -41,16 +42,16 @@ app.use(express.static("public"));
 app.get("/", async function (req, res) {
 
     const day = date.getDate();
-    items = await Item.find({});
+    const itemsCollection = await Item.find({});
     // Calling EJS file to render.
     res.render("list", {
         listTitle: day,
-        newListItems: items
+        itemsList: itemsCollection
     });
 });
 
 app.post("/", function (req, res) {
-    const postItemString = req.body.newItem;
+    const postItemString = req.body.inputNewItem;
     const newItem = new Item({title: postItemString});
     newItem.save().then(() => console.log('new Item saved'));
     res.redirect("/");
